@@ -2,31 +2,26 @@
 
 class stack:
     def __init__(self):
-        self.s=[]
-        self.temp=[]
-        self.minEle=None
+        self.stack = []
+        self.min_stack = []
 
-    def push(self,x):
-        if len(self.temp)==0 or x<=self.temp[-1]:
-            self.temp.append(x)
-        self.s.append(x)
-        #CODE HERE
+    def push(self, x):
+        self.stack.append(x)
+        if not self.min_stack or x <= self.min_stack[-1]:
+            self.min_stack.append(x)
 
     def pop(self):
-        if not self.s:
+        if not self.stack:
             return -1
-        if self.s[-1]==self.temp[-1]:
-            self.temp.pop(-1)
-        return self.s.pop(-1)
-        
-        #CODE HERE
-        
+        popped = self.stack.pop()
+        if popped == self.min_stack[-1]:
+            self.min_stack.pop()
+        return popped
 
     def getMin(self):
-        if not self.temp:
+        if not self.min_stack:
             return -1
-        return self.temp[-1]
-        
+        return self.min_stack[-1]
         #CODE HERE
 
 
