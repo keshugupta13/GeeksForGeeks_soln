@@ -4,8 +4,8 @@ class Solution:
     def SolveSudoku(self, grid):
         
         def solve():
-            for i in range(9):
-                for j in range(9):
+            for i in range(len(grid)):
+                for j in range(len(grid[0])):
                     # Check if the cell is empty
                     if grid[i][j] == 0:
                         for c in range(1, 10):  # Try numbers from 1 to 9
