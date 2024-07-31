@@ -2,19 +2,25 @@
 
 class Solution:
     def longestCommonPrefix(self, arr):
-        p=max(arr)
-        q=min(arr)
-        m=len(q)
+        arr.sort()
+        first = arr[0]
+        last = arr[len(arr)-1]
+        n = len(last)
         ans=""
-        for i in range(m):
-            if q[i]==p[i]:
-                ans+=q[i]
-            else:
+        
+        i = 0
+        for i in range(n):
+            if first[i] != last[i]:
                 break
+            
+            ans += first[i]
+        
         if ans:
             return ans
         else:
-            return -1
+            return "-1"
+                
+            
         # code here
 
 
