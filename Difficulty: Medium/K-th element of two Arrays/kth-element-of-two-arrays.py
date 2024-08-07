@@ -1,14 +1,31 @@
 #User function Template for python3
 
 class Solution:
-    def kthElement(self,  arr1, arr2, n, m, k):
-        final=[]
-        for i in range (0,len(arr1)):
-            final.append(arr1[i])
-        for i in range(0,len(arr2)):
-            final.append(arr2[i])
-        final.sort()
-        return final[k-1]
+    def kthElement(self, k, arr1, arr2):
+        n = len(arr1)
+        m = len(arr2)
+        i,j = 0 ,0
+        arr=[]
+        while i<n and j<m:
+            if arr1[i] < arr2[j]:
+                arr.append(arr1[i])
+                i += 1
+            else:
+                arr.append(arr2[j])
+                j += 1
+                
+        while i <n:
+            arr.append(arr1[i])
+            i+=1
+        
+        while j <m:
+            arr.append(arr2[j])
+            j += 1
+            
+        return arr[k-1]
+                
+            
+                
         
         
         
@@ -18,17 +35,18 @@ class Solution:
  # Driver Code Starts
 #Initial Template for Python 3
 
+
 def main():
 
     T = int(input())
 
-    while(T > 0):
-        sz = [int(x) for x in input().strip().split()]
-        n, m, k = sz[0], sz[1], sz[2]
+    while (T > 0):
+
+        k = int(input())
         a = [int(x) for x in input().strip().split()]
         b = [int(x) for x in input().strip().split()]
         ob = Solution()
-        print(ob.kthElement( a, b, n, m, k))
+        print(ob.kthElement(k, a, b))
 
         T -= 1
 
