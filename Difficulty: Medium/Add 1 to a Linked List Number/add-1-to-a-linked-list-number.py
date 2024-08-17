@@ -10,33 +10,42 @@ class Node:
 
 class Solution:
     def addOne(self,head):
-        def rev(cur=head):
-            prv=None
-            while cur:
-                tmp=cur.next
-                cur.next=prv
-                prv=cur
-                cur=tmp
-            return prv
-        nhead=rev(head)
-        cur=nhead
-        while cur:
-            cur.data+=1
-            if cur.data<10:
+        def reverse(head):
+            prev = None
+            curr = head
+            next = None
+            while curr:
+                next = curr.next
+                curr.next = prev
+                prev = curr
+                curr = next
+            return prev
+            
+        head = reverse(head)
+        temp = head
+        carry = 1
+        while temp:
+            temp.data = temp.data + carry
+            if temp.data < 10:
+                carry = 0
                 break
-            cur.data=0
-            if cur.next:
-                cur=cur.next
             else:
-                cur.next=Node(0)
-                cur=cur.next
-        nhead=rev(nhead)
-        if nhead.data>=10:
-            nhead.data=0
-            tmp=Node(1)
-            tmp.next=nhead
-            nhead=tmp
-        return nhead
+                temp.data = 0
+                carry = 1
+            temp = temp.next
+            
+        if carry == 1:
+            node = Node(1)
+            node.next = head
+            head = node
+        else:
+            head = reverse(head)
+        
+        return head
+        
+        
+        
+                
         #Returns new head of linked List.
 
 
