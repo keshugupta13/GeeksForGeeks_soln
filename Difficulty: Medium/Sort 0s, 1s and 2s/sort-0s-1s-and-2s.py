@@ -2,32 +2,35 @@
 
 class Solution:
     def sort012(self,arr,n):
-        f0 = 0
-        f1 = 0
-        f2 = 0
-        
-       
-        for i in arr:
-            if i == 0:
-                f0 += 1
-            elif i == 1:
-                f1 += 1
+        count_0 = 0
+        count_1 = 0
+        count_2 =0 
+        for i in range(n):
+            if arr[i] == 0:
+                count_0  += 1
+            
+            elif arr[i] == 1:
+                count_1 += 1
+                
             else:
-                f2 += 1
-
-     
+                count_2 +=1
+                
         i = 0
-        for j in range(1, f0 + 1):
+        for j in range(count_0):
             arr[i] = 0
             i += 1
-        for j in range(1, f1 + 1):
+            
+        for j in range(count_1):
             arr[i] = 1
             i += 1
-        for j in range(1, f2 + 1):
+            
+        for j in range(count_2):
             arr[i] = 2
             i += 1
-      
+            
         
+        # code here
+
 
 
 #{ 
