@@ -1,29 +1,31 @@
 class Solution:
     def findMaxDiff(self, arr):
-        ls=[0]*len(arr)
-        rs=[0]*len(arr)
+        n = len(arr)
+        left_small = [0] * n
+        right_small = [0] * n
         stack=[]
-        for i in range(len(arr)):
-            while stack and arr[i]<=stack[-1]:
+        stack.append(0)
+        for i in range(n):
+            while stack and arr[i] <= stack[-1]:
                 stack.pop()
-            if not stack:
-                ls[i]=0
-            else:
-                ls[i]=stack[-1]
+            left_small[i] = stack[-1]
             stack.append(arr[i])
         stack.clear()
-        for i in range(len(arr)-1,-1,-1):
-            while stack and arr[i]<=stack[-1]:
+        
+        stack.append(0)
+        for i in range(n-1,-1,-1):
+            while stack and arr[i] <= stack[-1]:
                 stack.pop()
-            if not stack:
-                rs[i]=0
-            else:
-                rs[i]=stack[-1]
+            right_small[i] = stack[-1]
             stack.append(arr[i])
-        maxi=0
-        for i in range(len(arr)):
-            maxi=max(maxi,abs(ls[i]-rs[i]))
-        return maxi
+            
+        ans = 0
+        for i in range(n):
+            ans = max(ans,abs(left_small[i] - right_small[i]))
+        return ans
+                
+        
+        
         # code here
 
 
