@@ -5,12 +5,23 @@
 class Solution:
     def find3Numbers(self, arr):
         n = len(arr)
+        small = [-1] * n
+        big = [-1] * n
+        small[0] = arr[0]
+        for i in range(1,n):
+            small[i] = min(arr[i],small[i-1])
+            
+        big[-1] = arr[-1]
+        for i in range(n-2,-1,-1):
+            big[i] = max(arr[i],big[i+1])
+            
         for i in range(n):
-            for j in range(i+1,n):
-                for k in range(j+1,n):
-                    if arr[i] < arr[j] and arr[j] < arr[k]:
-                        return (arr[i],arr[j],arr[k])
+            if arr[i] > small[i] and arr[i] < big[i]:
+                return (small[i],arr[i],big[i])
+                
         return []
+            
+        
         
         
         
