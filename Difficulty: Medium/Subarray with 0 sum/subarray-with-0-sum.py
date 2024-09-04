@@ -4,14 +4,17 @@ class Solution:
     
     #Function to check whether there is a subarray present with 0-sum or not.
     def subArrayExists(self,arr,n):
-        pre_sum=0
-        h=set()
+        sum1 = 0
+        h = set()
         for i in range(n):
-            pre_sum+=arr[i]
-            if pre_sum==0 or pre_sum in h:
+            sum1 += arr[i]
+            if sum1 == 0 or sum1 in h:
                 return True
-            h.add(pre_sum)
+            h.add(sum1)
+            
         return False
+            
+            
         ##Your code here
         #Return true or false
 
