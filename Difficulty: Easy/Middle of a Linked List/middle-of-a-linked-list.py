@@ -8,7 +8,7 @@ class node:
 '''
 class Solution:
     #  Should return data of middle node. If linked list is empty, then  -1
-    def findMid(self, head):
+    def getMiddle(self, head):
         if head is None:
             return -1
 
@@ -69,11 +69,10 @@ if __name__ == '__main__':
     t = int(input())
     for i in range(t):
         list1 = Linked_List()
-        n = int(input())
-        values = list(map(int, input().strip().split()))
-        for i in values:
+        arr = list(map(int, input().strip().split()))
+        for i in arr:
             list1.insert(i)
         ob = Solution()
-        print(ob.findMid(list1.head))
+        print(ob.getMiddle(list1.head))
 
 # } Driver Code Ends
