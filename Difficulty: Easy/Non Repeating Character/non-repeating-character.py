@@ -3,16 +3,17 @@
 class Solution:
     
     #Function to find the first non-repeating character in a string.
-    def nonrepeatingCharacter(self,s):
-        count = {}
+    def nonRepeatingChar(self,s):
+        freq = {}
+        n = len(s)
         for char in s:
-            if char in count:
-                count[char] += 1
+            if char not in freq:
+                freq[char] = 1
             else:
-                count[char] = 1
+                freq[char] += 1
                 
         for char in s:
-            if count[char] == 1:
+            if freq[char] == 1:
                 return char
         return -1
         #code here
@@ -33,20 +34,23 @@ input = iter(_INPUT_LINES).__next__
 _OUTPUT_BUFFER = io.StringIO()
 sys.stdout = _OUTPUT_BUFFER
 
-@atexit.register
 
+@atexit.register
 def write():
     sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     t = int(input())
     for i in range(t):
-        s=str(input())
+        s = str(input())
         obj = Solution()
-        ans=obj.nonrepeatingCharacter(s)
-        if(ans!='$'):
+        ans = obj.nonRepeatingChar(s)
+        if (ans != '$'):
             print(ans)
         else:
             print(-1)
-            
+
+        print("~")
+
 # } Driver Code Ends
